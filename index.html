@@ -459,6 +459,8 @@
             border-radius: var(--radius);
             overflow: hidden;
             position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         .modal__close {
@@ -497,6 +499,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+						display: block;
         }
 
         .modal__info {
@@ -525,7 +528,8 @@
             }
             
             .modal__image {
-                min-height: 300px;
+                min-height: 0;
+                height: 200px;
             }
         }
 
