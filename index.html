@@ -560,6 +560,31 @@
                 font-size: 1.1rem;
             }
         }
+
+        .product-card__image--placeholder, .modal__image--placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #f3f3f3;
+            color: #aaa;
+            font-size: 1.1rem;
+            height: 200px;
+            border-radius: var(--radius);
+            border: 1px dashed #ccc;
+            margin-bottom: 10px;
+        }
+
+        .placeholder__icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #bbb;
+        }
+
+        .placeholder__text {
+            font-size: 1rem;
+            color: #aaa;
+        }
     </style>
 </head>
 <body>
@@ -789,8 +814,9 @@
                 <i class="fas fa-times"></i>
             </button>
             <div class="modal__body">
-                <div class="modal__image">
-                    <img id="modal-image" src="" alt="Продукция">
+                <div class="modal__image modal__image--placeholder">
+                    <i class="fas fa-image placeholder__icon"></i>
+                    <span class="placeholder__text">Фото отсутствует</span>
                 </div>
                 <div class="modal__info">
                     <h2 class="modal__title" id="modal-title"></h2>
@@ -805,43 +831,187 @@
     <script>
         // Products data
         const products = [
-            {
-                id: 1,
-                title: "Пирожок с картофелем и грибами (постный)",
-                type: "Печенье",
-                weight: "80 гр.",
-                price: "от 850 руб./кг",
-                description: "Натуральное овсяное печенье с добавлением изюма и орехов. Отличный вариант для кофейных автоматов и ресторанов. Минимальный заказ - 10 кг.",
-                image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?ixlib=rb-4.0.3"
-            },
-            {
-                id: 2,
-                title: "Пряники имбирные",
-                type: "Пряники",
-                weight: "5 кг",
-                price: "от 950 руб./кг",
-                description: "Ароматные имбирные пряники с глазурью. Популярны в кафе и кондитерских. Возможна индивидуальная упаковка. Минимальный заказ - 5 кг.",
-                image: "https://images.unsplash.com/photo-1603532648955-039310d9ed75?ixlib=rb-4.0.3"
-            },
-            {
-                id: 3,
-                title: "Вафли с шоколадом",
-                type: "Вафли",
-                weight: "8 кг",
-                price: "от 780 руб./кг",
-                description: "Хрустящие вафли с начинкой из натурального шоколада. Отлично подходят для торговых автоматов и розничной торговли. Минимальный заказ - 8 кг.",
-                image: "https://images.unsplash.com/photo-1624353365286-3f8d62daad51?ixlib=rb-4.0.3"
-            },
-            {
-                id: 4,
-                title: "Кексы маффины",
-                type: "Кексы",
-                weight: "12 кг",
-                price: "от 920 руб./кг",
-                description: "Нежные маффины с различными начинками (черника, шоколад, лимон). Популярны в кофейнях и ресторанах. Минимальный заказ - 12 кг.",
-                image: "https://images.unsplash.com/photo-1571115177098-24ec42ed204d?ixlib=rb-4.0.3"
-            }
-        ];
+					{
+							"id": 1,
+							"title": "Зефир ванильный",
+							"type": "Зефир",
+							"weight": "5 кг",
+							"price": "от 650 руб./кг",
+							"description": "Воздушный ванильный зефир, идеально подходит для чаепития и десертов. Минимальный заказ — 5 кг.",
+							"image": "https://img.freepik.com/free-photo/white-marshmallow-on-white-background_23-2148357532.jpg"
+					},
+					{
+							"id": 2,
+							"title": "Зефир классический",
+							"type": "Зефир",
+							"weight": "5 кг",
+							"price": "от 600 руб./кг",
+							"description": "Нежный зефир с традиционным вкусом. Минимальный заказ — 5 кг.",
+							"image": "https://img.freepik.com/free-photo/homemade-marshmallows-on-wooden-table_114579-7316.jpg"
+					},
+					{
+							"id": 3,
+							"title": "Зефир клубничный",
+							"type": "Зефир",
+							"weight": "5 кг",
+							"price": "от 680 руб./кг",
+							"description": "Ароматный зефир с натуральным клубничным вкусом. Минимальный заказ — 5 кг.",
+							"image": "https://img.freepik.com/free-photo/pink-marshmallow-on-white-background_23-2148357535.jpg"
+					},
+					{
+							"id": 4,
+							"title": "Маршмеллоу белый",
+							"type": "Маршмеллоу",
+							"weight": "10 кг",
+							"price": "от 550 руб./кг",
+							"description": "Мягкие воздушные маршмеллоу без добавок. Минимальный заказ — 10 кг.",
+							"image": "https://img.freepik.com/free-photo/marshmallows-white-background_23-2148357530.jpg"
+					},
+					{
+							"id": 5,
+							"title": "Маршмеллоу фруктовый микс",
+							"type": "Маршмеллоу",
+							"weight": "10 кг",
+							"price": "от 620 руб./кг",
+							"description": "Разноцветные маршмеллоу с разными фруктовыми вкусами. Минимальный заказ — 10 кг.",
+							"image": "https://img.freepik.com/free-photo/colorful-marshmallows-white-background_23-2148357534.jpg"
+					},
+					{
+							"id": 6,
+							"title": "Пряники медовые",
+							"type": "Пряники",
+							"weight": "7 кг",
+							"price": "от 450 руб./кг",
+							"description": "Ароматные медовые пряники с глазурью. Минимальный заказ — 7 кг.",
+							"image": "https://img.freepik.com/free-photo/honey-gingerbread-cookies-wooden-table_114579-7317.jpg"
+					},
+					{
+							"id": 7,
+							"title": "Пряники шоколадные",
+							"type": "Пряники",
+							"weight": "7 кг",
+							"price": "от 480 руб./кг",
+							"description": "Пряники с насыщенным шоколадным вкусом. Минимальный заказ — 7 кг.",
+							"image": "https://img.freepik.com/free-photo/chocolate-gingerbread-cookies-white-background_23-2148357537.jpg"
+					},
+					{
+							"id": 8,
+							"title": "Зефир в шоколаде",
+							"type": "Зефир",
+							"weight": "5 кг",
+							"price": "от 750 руб./кг",
+							"description": "Нежный зефир, покрытый гладким шоколадом. Минимальный заказ — 5 кг.",
+							"image": "https://img.freepik.com/free-photo/chocolate-covered-marshmallows-white-background_23-2148357538.jpg"
+					},
+					{
+							"id": 9,
+							"title": "Зефир ассорти (3 вкуса)",
+							"type": "Зефир",
+							"weight": "6 кг",
+							"price": "от 700 руб./кг",
+							"description": "Набор зефира с черной смородиной, вишней и грейпфрутом. Минимальный заказ — 6 кг.",
+							"image": "https://img.freepik.com/free-photo/assorted-marshmallows-white-background_23-2148357533.jpg"
+					},
+					{
+							"id": 10,
+							"title": "Мармелад фруктовый",
+							"type": "Мармелад",
+							"weight": "8 кг",
+							"price": "от 500 руб./кг",
+							"description": "Яркий мармелад с натуральными фруктовыми вкусами. Минимальный заказ — 8 кг.",
+							"image": "https://img.freepik.com/free-photo/fruit-gummies-white-background_23-2148357539.jpg"
+					},
+					{
+							"id": 11,
+							"title": "Пастила яблочная",
+							"type": "Пастила",
+							"weight": "4 кг",
+							"price": "от 520 руб./кг",
+							"description": "Натуральная пастила из яблочного пюре. Минимальный заказ — 4 кг.",
+							"image": "https://img.freepik.com/free-photo/apple-paste-white-background_23-2148357540.jpg"
+					},
+					{
+							"id": 12,
+							"title": "Зефир с орехами",
+							"type": "Зефир",
+							"weight": "5 кг",
+							"price": "от 720 руб./кг",
+							"description": "Воздушный зефир с кусочками грецких орехов. Минимальный заказ — 5 кг.",
+							"image": "https://img.freepik.com/free-photo/marshmallow-with-nuts-white-background_23-2148357541.jpg"
+					},
+					{
+							"id": 13,
+							"title": "Печенье овсяное",
+							"type": "Печенье",
+							"weight": "10 кг",
+							"price": "от 400 руб./кг",
+							"description": "Полезное овсяное печенье с добавлением изюма. Минимальный заказ — 10 кг.",
+							"image": "https://img.freepik.com/free-photo/oatmeal-cookies-white-background_23-2148357542.jpg"
+					},
+					{
+							"id": 14,
+							"title": "Кексы ванильные",
+							"type": "Кексы",
+							"weight": "12 кг",
+							"price": "от 580 руб./кг",
+							"description": "Мягкие ванильные кексы с нежной текстурой. Минимальный заказ — 12 кг.",
+							"image": "https://img.freepik.com/free-photo/vanilla-cupcakes-white-background_23-2148357543.jpg"
+					},
+					{
+							"id": 15,
+							"title": "Шоколадные конфеты",
+							"type": "Конфеты",
+							"weight": "9 кг",
+							"price": "от 800 руб./кг",
+							"description": "Ассорти шоколадных конфет с разными начинками. Минимальный заказ — 9 кг.",
+							"image": "https://img.freepik.com/free-photo/chocolate-candies-white-background_23-2148357544.jpg"
+					},
+					{
+							"id": 16,
+							"title": "Вафли с шоколадом",
+							"type": "Вафли",
+							"weight": "8 кг",
+							"price": "от 450 руб./кг",
+							"description": "Хрустящие вафли с шоколадной прослойкой. Минимальный заказ — 8 кг.",
+							"image": "https://img.freepik.com/free-photo/chocolate-waffles-white-background_23-2148357545.jpg"
+					},
+					{
+							"id": 17,
+							"title": "Пирожное «Картошка»",
+							"type": "Пирожные",
+							"weight": "6 кг",
+							"price": "от 650 руб./кг",
+							"description": "Классическое пирожное из крошки печенья и какао. Минимальный заказ — 6 кг.",
+							"image": "https://img.freepik.com/free-photo/chocolate-cake-pops-white-background_23-2148357546.jpg"
+					},
+					{
+							"id": 18,
+							"title": "Торт «Наполеон»",
+							"type": "Торты",
+							"weight": "5 кг",
+							"price": "от 900 руб./кг",
+							"description": "Нежный слоеный торт с заварным кремом. Минимальный заказ — 5 кг.",
+							"image": "https://img.freepik.com/free-photo/napoleon-cake-white-background_23-2148357547.jpg"
+					},
+					{
+							"id": 19,
+							"title": "Рулет бисквитный",
+							"type": "Рулеты",
+							"weight": "4 кг",
+							"price": "от 550 руб./кг",
+							"description": "Мягкий бисквитный рулет с вареньем. Минимальный заказ — 4 кг.",
+							"image": "https://img.freepik.com/free-photo/sponge-roll-white-background_23-2148357548.jpg"
+					},
+					{
+							"id": 20,
+							"title": "Эклеры с заварным кремом",
+							"type": "Эклеры",
+							"weight": "5 кг",
+							"price": "от 700 руб./кг",
+							"description": "Воздушные эклеры с нежным заварным кремом. Минимальный заказ — 5 кг.",
+							"image": "https://img.freepik.com/free-photo/cream-puffs-white-background_23-2148357549.jpg"
+					}
+			]
 
         // Generate products
         const productsGrid = document.getElementById('products-grid');
@@ -852,8 +1022,8 @@
             productCard.dataset.id = product.id;
             
             productCard.innerHTML = `
-                <div class="product-card__image">
-                    <img src="${product.image}" alt="${product.title}">
+                <div class="product-card__image product-card__image--placeholder">
+                    <i class="fas fa-image placeholder__icon"></i>
                 </div>
                 <div class="product-card__content">
                     <h3 class="product-card__title">${product.title}</h3>
@@ -880,8 +1050,6 @@
         const modalClose = document.querySelector('.modal__close');
         
         function openModal(product) {
-            modalImage.src = product.image;
-            modalImage.alt = product.title;
             modalTitle.textContent = product.title;
             modalMeta.innerHTML = `
                 <p><strong>Тип:</strong> ${product.type}</p>
